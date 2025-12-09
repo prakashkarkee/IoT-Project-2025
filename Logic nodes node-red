@@ -1,0 +1,36 @@
+Node logics
+
+/*Boundary utilization node*/
+/*This function node has set threshold boundaries in the form of minusboundary and plusboundary*/
+/*If the fetched payload message is below or over these values, the corresponding return message is selected*/
+/*If the value is within the threshold of these 2 variables, the code returns null, which leads to no actions*/
+/*TLDR when everything is working in the threshold, no action taken, when out of threshold, return alert message*/
+
+var minusboundary = 2; /* Variable for lower boundary*/
+var plusboundary = 8; /*Variable for higher boundary*/
+var measurements = parseFloat(msg.payload); /*Fetching of measurements to variable*/
+
+if (measurements < minusboundary) /*If statement for lower than lower boundary*/
+    {msg.payload = "minusboundary"; /*Setting alert message*/
+    return msg;} /*Return minusboundary alert message*/
+if (measurements > plusboundary) /*If statement for higher than plusboundary*/
+    {msg.payload = "plusboundary"; /*Setting alert message*/
+    return msg;} /*Return plusboundary alert message*/
+return null; /*Returns null when measurements are in the boundary*/
+
+--
+
+/*Boundary utilization node*/
+/*This function node has set threshold boundaries in the form of minusboundary and plusboundary*/
+/*If the fetched payload message is below or over these values, the corresponding return message is selected*/
+/*If the value is within the threshold of these 2 variables, the code returns null, which leads to no actions*/
+/*TLDR when everything is working in the threshold, no action taken, when out of threshold, return alert message*/
+
+var minusboundary = -50; /* Variable for lower boundary*/
+var plusboundary = 50; /*Variable for higher boundary*/
+var measurements = parseFloat(msg.payload); /*Fetching of measurements to variable*/
+
+if (measurements > minusboundary && measurements < plusboundary) /*If statement for inside the boundary*/
+    {msg.payload = measurements; /*Making msg payload the current measurement value*/
+    return msg;} /*Return message for InfluxDB*/
+return null; /*Returns null when measurements are outside the boundary*/
