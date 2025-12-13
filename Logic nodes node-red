@@ -1,4 +1,4 @@
-Node logics
+Node logics / Made by Jarkko Ahtiluoma.
 
 /*Boundary utilization node*/
 /*This function node has set threshold boundaries in the form of minusboundary and plusboundary*/
